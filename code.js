@@ -1,19 +1,19 @@
 const form = document.getElementById("signup-form");
 const btn = document.getElementById("btn");
 const extra = document.getElementById("extra");
-let formSubmitted = false;
+
 
 
 
 form.addEventListener("submit",(e)=>{
-    console.log("hiii");
     e.preventDefault();
     extra.style.display ="none";
-    formSubmitted = true;
+    
     const uName = document.getElementById("name").value;
     const mail = document.getElementById("mail").value;
     const password = document.getElementById("password").value;
     const cpassword = document.getElementById("cpassword").value;
+   
     
     if(password !== cpassword)
     {     extra.innerHTML =" ";
@@ -64,19 +64,19 @@ function generateAccessToken() {
 
 
 btn.addEventListener("click",()=>{
-    if(formSubmitted===false)
+    extra.innerHTML="";
+    const uName = document.getElementById("name").value;
+    const mail = document.getElementById("mail").value;
+    const password = document.getElementById("password").value;
+    const cpassword = document.getElementById("cpassword").value;
+    if(uName==="" || mail==="" || password==="" || cpassword==="")
     {
-        const uName = document.getElementById("name").value;
-        const mail = document.getElementById("mail").value;
-        const password = document.getElementById("password").value;
-        const cpassword = document.getElementById("cpassword").value;
-       if(uName==="" || mail==="" || password==="" || cpassword==="")
-       {
-          const errorStatement = document.createElement("p");
-          errorStatement.innerText= "Error: All the fields are mandatory";
-          errorStatement.style.color ="red";
-          extra.appendChild(errorStatement);
-          extra.style.display ="block";
-       }
+       const errorStatement = document.createElement("p");
+       errorStatement.innerText= "Error: All the fields are mandatory";
+       errorStatement.style.color ="red";
+       extra.appendChild(errorStatement);
+       extra.style.display ="block";
     }
+    
 })
+
